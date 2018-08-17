@@ -44,7 +44,7 @@ std::vector<Corpo*> *ListaDeCorpos::get_corpos() {
 Fisica::Fisica(ListaDeCorpos *ldc) {
   this->lista = ldc;
   this->k = 5; //constante da mola
-  this->b = 2; //constante de amortecimento
+  this->b = 1; //constante de amortecimento
 }
 
 void Fisica::update(float deltaT) {
