@@ -1,3 +1,8 @@
+/*
+Nome: Guilherme de Brito Abreu
+RA: 173691
+*/
+
 #ifndef OO_MODEL_HPP
 #define OO_MODEL_HPP
 

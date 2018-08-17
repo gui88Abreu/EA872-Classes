@@ -1,3 +1,8 @@
+/*
+Nome: Guilherme de Brito Abreu
+RA: 173691
+*/
+
 #include <iostream>
 #include <thread>
 #include <vector>

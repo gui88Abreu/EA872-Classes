@@ -1,3 +1,8 @@
+/*
+Nome: Guilherme de Brito Abreu
+RA: 173691
+*/
+
 #include "oo_model.hpp"
 
 Corpo::Corpo(float massa, float velocidade, float posicao) {
