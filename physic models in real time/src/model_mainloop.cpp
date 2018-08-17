@@ -1,27 +1,25 @@
 #include <iostream>
-#include <chrono>
 #include <thread>
 #include <vector>
 #include <stdint.h>
+#include <chrono>
 
 #include "oo_model.hpp"
 
-using namespace std::chrono;
-
 uint64_t get_now_ms() {
-  return duration_cast<milliseconds>(steady_clock::now().time_since_epoch()).count();
+  return std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now().time_since_epoch()).count();
 }
 
 int main ()
 {
-  Corpo *c = new Corpo(2, 0, 5);
+  Corpo *c = new Corpo(2, 0, 2);
   ListaDeCorpos *l = new ListaDeCorpos();
   l->add_corpo(c);
 
   Fisica *f = new Fisica(l);
 
   std::cout << "Iniciando simulacao\n";
-  std::cout << "Simulando por 3 segundos\n";
+  std::cout << "Simulando por 10 segundos\n";
 
   uint64_t t0;
   uint64_t t1;
@@ -51,7 +49,7 @@ int main ()
     }
 
     // Condicao de parada
-    if ( (t1-T) > 30000 ) break;
+    if ( (t1-T) > 10000 ) break;
 
     std::this_thread::sleep_for (std::chrono::milliseconds(100));
     i++;

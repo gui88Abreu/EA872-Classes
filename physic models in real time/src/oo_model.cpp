@@ -38,8 +38,8 @@ std::vector<Corpo*> *ListaDeCorpos::get_corpos() {
 
 Fisica::Fisica(ListaDeCorpos *ldc) {
   this->lista = ldc;
-  this->k = 2; //constante da mola
-  this->b = 0; //constante de amortecimento
+  this->k = 5; //constante da mola
+  this->b = 2; //constante de amortecimento
 }
 
 void Fisica::update(float deltaT) {
@@ -48,7 +48,7 @@ void Fisica::update(float deltaT) {
   deltaT = deltaT/1000.0;
   
   for (int i = 0; i < (*c).size(); i++) {
-    float acel = ((-1)*this->k*(*c)[i]->get_posicao() + this->b*(*c)[i]->get_velocidade())/(*c)[i]->get_massa();
+    float acel = ((-1)*this->k*(*c)[i]->get_posicao() - this->b*(*c)[i]->get_velocidade())/(*c)[i]->get_massa();
     float new_vel = (*c)[i]->get_velocidade() + acel*deltaT;
     float new_pos = (*c)[i]->get_posicao() + deltaT *(*c)[i]->get_velocidade() + (acel*deltaT*deltaT/2.0);
     (*c)[i]->update(new_vel, new_pos);
