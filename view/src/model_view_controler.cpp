@@ -62,7 +62,7 @@ void Fisica::update(float deltaT) {
   deltaT = deltaT/1000.0;
   
   for (int i = 0; i < (*c).size(); i++) {
-    float acel = ((-1)*this->k*((*c)[i]->get_posicao() - 20.0) - this->b*(*c)[i]->get_velocidade())/(*c)[i]->get_massa();
+    float acel = ((-1)*this->k*((*c)[i]->get_posicao() - LINES/2) - this->b*(*c)[i]->get_velocidade())/(*c)[i]->get_massa();
     float new_vel = (*c)[i]->get_velocidade() + acel*deltaT;
     float new_pos = (*c)[i]->get_posicao() + deltaT *new_vel;
     if (new_pos < 0) {
@@ -98,7 +98,7 @@ void Tela::update() {
   for (int k=0; k<corpos_old->size(); k++)
   {
     i = (int) ((*corpos_old)[k]->get_posicao()) * (this->maxI / this->maxX);
-    move(i, k);   /* Move cursor to position */
+    move(i, COLS/2 - 2  + k);   /* Move cursor to position */
     echochar(' ');  /* Prints character, advances a position */
   }
 
@@ -109,7 +109,7 @@ void Tela::update() {
   {
     i = (int) ((*corpos)[k]->get_posicao()) * (this->maxI / this->maxX);
 
-    if (move(i, k) == ERR) continue;   /* Move cursor to position */
+    if (move(i, COLS/2 - 2  + k) == ERR) continue;   /* Move cursor to position */
     echochar('*');  /* Prints character, advances a position */
 
     // Atualiza corpos antigos
