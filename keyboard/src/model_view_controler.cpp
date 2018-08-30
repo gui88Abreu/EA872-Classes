@@ -54,6 +54,7 @@ Fisica::Fisica(ListaDeCorpos *ldc) {
   this->lista = ldc;
   this->k = 5; //constante da mola
   this->b = 1; //constante de amortecimento
+  this->ext_force = 0;
 }
 
 void Fisica::update(float deltaT) {
@@ -62,7 +63,7 @@ void Fisica::update(float deltaT) {
   deltaT = deltaT/1000.0;
   
   for (int i = 0; i < (*c).size(); i++) {
-    float acel = ((-1)*this->k*((*c)[i]->get_posicao() - LINES/2) - this->b*(*c)[i]->get_velocidade())/(*c)[i]->get_massa();
+    float acel = ((-1)*this->k*((*c)[i]->get_posicao() - LINES/2) + this->ext_force - this->b*(*c)[i]->get_velocidade())/(*c)[i]->get_massa();
     float new_vel = (*c)[i]->get_velocidade() + acel*deltaT;
     float new_pos = (*c)[i]->get_posicao() + deltaT *new_vel;
     if (new_pos < 0) {
@@ -71,16 +72,12 @@ void Fisica::update(float deltaT) {
     }
     (*c)[i]->update(new_vel, new_pos);
   }
+  this->ext_force = 0;
 }
 
 void Fisica::choque(int direction) {
   // Atualiza parametros dos corpos!
-  std::vector<Corpo *> *c = this->lista->get_corpos();
-  for (int i = 0; i < (*c).size(); i++) {
-    float new_vel = 15*direction;
-    float new_pos = (*c)[i]->get_posicao();
-    (*c)[i]->update(new_vel, new_pos);
-  }
+  this->ext_force = 50*direction;
 }
 
 Tela::Tela(ListaDeCorpos *ldc, int maxI, int maxJ, float maxX, float maxY) {

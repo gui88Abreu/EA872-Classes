@@ -13,9 +13,9 @@ uint64_t get_now_ms() {
 int main ()
 {
   Corpo *c1 = new Corpo(10, 0, 20);
-  Corpo *c2 = new Corpo(10, 0, 19);
-  Corpo *c3 = new Corpo(10, 0, 17);
-  Corpo *c4 = new Corpo(10, 0, 15);
+  Corpo *c2 = new Corpo(10, 0, 18);
+  Corpo *c3 = new Corpo(10, 0, 16);
+  Corpo *c4 = new Corpo(10, 0, 14);
 
   ListaDeCorpos *l = new ListaDeCorpos();
   l->add_corpo(c1);

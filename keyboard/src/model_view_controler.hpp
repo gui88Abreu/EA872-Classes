@@ -41,6 +41,7 @@ class Fisica {
     ListaDeCorpos *lista;
     float k;
     float b;
+    float ext_force;
   public:
     Fisica(ListaDeCorpos *ldc);
     void choque(int direction);
