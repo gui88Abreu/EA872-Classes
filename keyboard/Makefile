@@ -16,6 +16,9 @@ $(TARGET):$(OBJS)
 %.o:%.cpp
 	$(CC) $(SRCS) $(CFLAGS) -c $< -o $@
 
+run:all
+	./$(TARGET)
+
 clean:
 	$(RM) ./$(TARGET)
 	$(RM) $(DIR)/*.o
