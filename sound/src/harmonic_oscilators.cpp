@@ -3,8 +3,9 @@
 #include <thread>
 #include <vector>
 
-#include "model_view_controler.hpp"
-#include "audio.hpp"
+#include "../include/model/model.hpp"
+#include "../include/view/view.hpp"
+#include "../include/controler/controler.hpp"
 
 using namespace std::chrono;
 uint64_t get_now_ms() {
@@ -15,7 +16,7 @@ int main ()
 {
   Audio::Sample *asample;
   asample = new Audio::Sample();
-  asample->load("src/assets/blip.dat");
+  asample->load("audio/assets/blip.dat");
 
   Audio::Player *player;
   player = new Audio::Player();
