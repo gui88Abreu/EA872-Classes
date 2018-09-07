@@ -21,6 +21,7 @@ int main ()
   Audio::Player *player;
   player = new Audio::Player();
   player->init();
+  player->play(asample);
   
   Corpo *c1 = new Corpo(10, 0, 20);
   Corpo *c2 = new Corpo(10, 0, 18);
@@ -50,7 +51,6 @@ int main ()
 
   T = get_now_ms();
   t1 = T;
-  asample->set_position(0);
   while (1) {
     // Atualiza timers
     t0 = t1;
@@ -68,12 +68,10 @@ int main ()
     if (c=='s'){
       f->choque(1);
       asample->set_position(0);
-      player->play(asample);
     }
     if(c == 'w'){
       f->choque(-1);
       asample->set_position(0);
-      player->play(asample);
     }
     if (c=='q')
       break;
